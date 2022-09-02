@@ -1,9 +1,8 @@
 package pageObjects.saucedemo;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.baseObjects.BasePage;
-
-import static driver.SimpleDriver.getWebDriver;
 
 public class LoginPage extends BasePage {
     private final By username = By.id("user-name");
@@ -11,7 +10,7 @@ public class LoginPage extends BasePage {
     private final By loginBtn = By.id("login-button");
 
     public LoginPage open() {
-        getWebDriver().get("https://www.saucedemo.com/");
+        driver.get("https://www.saucedemo.com/");
         return this;
     }
 
@@ -22,6 +21,11 @@ public class LoginPage extends BasePage {
 
     public LoginPage enterPassword(String password) {
         enter(this.password, password);
+        return this;
+    }
+
+    public LoginPage verifyThatLoginPageIsClosed(){
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(loginBtn));
         return this;
     }
 
