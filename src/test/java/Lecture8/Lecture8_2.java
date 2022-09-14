@@ -15,7 +15,7 @@ public class Lecture8_2 extends BaseTest {
                 .open();
     }
 
-    @Test(enabled = false)
+    @Test()
     public void dynamicLoading_Test() {
         new NavigationPage()
                 .navigateTo(DYNAMIC_LOADING);
@@ -25,14 +25,14 @@ public class Lecture8_2 extends BaseTest {
                 .pageIsLoaded();
     }
 
-    @Test(enabled = false)
+    @Test()
     public void scrollPage_Test() {
         new NavigationPage()
                 .navigateTo(INFINITE_SCROLL);
         new InfiniteScrollPage().infiniteScroll(10);
     }
 
-    @Test(enabled = false)
+    @Test()
     public void contextMenu_Test() {
         new NavigationPage()
                 .navigateTo(CONTEXT_MENU);

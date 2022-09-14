@@ -8,27 +8,29 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
 
 public class SimpleDriver {
-    private static WebDriver webDriver;
+    private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
     {
-        if (webDriver == null) {
+        if (webDriver.get() == null) {
             WebDriverManager.chromedriver().setup();
-            webDriver = new ChromeDriver(getChromeOptions());
-            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-            webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
-            webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+            webDriver.set(new ChromeDriver(getChromeOptions()));
+            webDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            webDriver.get().manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
+            webDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         }
     }
 
 
     public static WebDriver getWebDriver() {
-        return webDriver;
+        return webDriver.get();
     }
 
-    public static void closeWebDriver(){
-        webDriver.close();
-        webDriver.quit();
-        webDriver = null;
+    public static void closeWebDriver() {
+        if (webDriver != null) {
+            webDriver.get().close();
+            webDriver.get().quit();
+            webDriver = null;
+        }
     }
 
 
@@ -36,7 +38,7 @@ public class SimpleDriver {
         System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
         WebDriver driver = new ChromeDriver(getChromeOptions());
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        webDriver = driver;
+        webDriver.set(driver);
     }
 
     private static ChromeOptions getChromeOptions() {
