@@ -12,8 +12,8 @@ public class Lecture8_1 extends BaseTest {
 
         new LoginPage()
                 .open()
-                .enterUsername("performance_glitch_user")
-                .enterPassword("secret_sauce")
+                .enterUsername(System.getProperty("username"))
+                .enterPassword(System.getProperty("password"))
                 .clickLogin()
                 .verifyThatLoginPageIsClosed();
         new ProductPage().verifyPageTitle();

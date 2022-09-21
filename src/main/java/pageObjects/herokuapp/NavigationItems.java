@@ -4,7 +4,8 @@ public enum NavigationItems {
     DYNAMIC_LOADING("Dynamic Loading"),
     INFINITE_SCROLL("Infinite Scroll"),
     CONTEXT_MENU("Context Menu"),
-    FRAMES("Frames");
+    FRAMES("Frames"),
+    SORTABLE_DATA_TABLES("Sortable Data Tables");
 
     private String item;
 

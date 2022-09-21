@@ -35,7 +35,7 @@ public abstract class BasePage {
     }
 
     protected void enter(By locator, CharSequence... enterData) {
-        System.out.println("I'm enter :: " + enterData + ", by locator :: " + locator);
+        System.out.println("I'm enter :: " + enterData.toString() + ", by locator :: " + locator);
         driver.findElement(locator).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
         driver.findElement(locator).sendKeys(enterData);
     }
