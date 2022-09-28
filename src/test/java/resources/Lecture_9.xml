@@ -5,36 +5,36 @@
     <test name="Lecture 9 test 1.1">
         <groups>
             <run>
-                <include name="test9"></include>
+                <include name="test9"/>
             </run>
         </groups>
         <classes>
-            <class name="Lecture9.Lecture9_1Test"></class>
+            <class name="Lecture9.Lecture9_1Test"/>
         </classes>
     </test>
 
     <test name="Lecture 9 test 1.2">
         <groups>
             <run>
-                <include name="test9new"></include>
+                <include name="test9new"/>
             </run>
         </groups>
         <classes>
-            <class name="Lecture9.Lecture9_1Test"></class>
+            <class name="Lecture9.Lecture9_1Test"/>
         </classes>
     </test>
 
     <test name="Lecture 9 test set 1.3">
         <classes>
-            <class name="Lecture9.Lecture9_2Test"></class>
+            <class name="Lecture9.Lecture9_2Test"/>
         </classes>
     </test>
 
     <test name="Lecture 9 test set 1.4">
-        <parameter name="url" value="https://www.saucedemo.com/"></parameter>
-        <parameter name="user" value="test"></parameter>
+        <parameter name="url" value="https://www.saucedemo.com/"/>
+        <parameter name="user" value="test"/>
         <classes>
-            <class name="Lecture9.Lecture9_3Test"></class>
+            <class name="Lecture9.Lecture9_3Test"/>
         </classes>
     </test>
 

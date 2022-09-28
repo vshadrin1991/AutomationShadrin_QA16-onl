@@ -1,7 +1,6 @@
 package pageObjects.herokuapp;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.baseObjects.BasePage;
 
 public class DynamicLoadingPage extends BasePage {

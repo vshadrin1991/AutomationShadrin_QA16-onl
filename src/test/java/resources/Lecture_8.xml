@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Lecture 8" parallel="tests" thread-count="2">
-    
+
     <test name="Lecture 8 2 tests">
         <classes>
-            <class name="Lecture8.Lecture8_2"></class>
+            <class name="Lecture8.Lecture8_2"/>
         </classes>
     </test>
 
     <test name="Lecture 8 1 tests">
         <classes>
-            <class name="Lecture8.Lecture8_1"></class>
+            <class name="Lecture8.Lecture8_1"/>
         </classes>
     </test>
-    
+
 </suite>

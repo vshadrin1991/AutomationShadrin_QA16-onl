@@ -29,7 +29,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public LoginPage verifyThatLoginPageIsClosed(){
+    public LoginPage verifyThatLoginPageIsClosed() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(loginBtn));
         return this;
     }

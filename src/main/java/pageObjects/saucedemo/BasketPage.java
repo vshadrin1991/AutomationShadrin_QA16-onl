@@ -16,7 +16,7 @@ public class BasketPage extends BasePage {
         return getElementCartItem(productName).findElement(By.className("inventory_item_price"));
     }
 
-    private WebElement getElementCartQuantity(String productName){
+    private WebElement getElementCartQuantity(String productName) {
         return getElementCartItem(productName).findElement(By.className("cart_quantity"));
     }
 
@@ -25,6 +25,6 @@ public class BasketPage extends BasePage {
     }
 
     public String enterCartQuantity(String productName) {
-         return getText(getElementCartQuantity(productName));
+        return getText(getElementCartQuantity(productName));
     }
 }

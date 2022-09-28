@@ -16,7 +16,7 @@ public class Lecture10Test extends BaseTest {
     @Test
     public void test() {
         new NavigationPage().open().navigateTo(NavigationItems.SORTABLE_DATA_TABLES);
-        Map<String, List<String>> mapTableData = new SortableDataTablesPage().clickTableColumn("Last Name").getTableData();
+        Map<String, List<String>> mapTableData = new SortableDataTablesPage().checkTableIsDisplayed().clickTableColumn("Last Name").getTableData();
         List<List<String>> tableData = new SortableDataTablesPage().getTableRowsData();
         Assert.assertTrue(tableData.get(2).contains("$100.00"));
         List<String> lastNameData = mapTableData.get("Last Name");

@@ -2,7 +2,6 @@ package Lecture4;
 
 import driver.SimpleDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -61,7 +60,7 @@ public class Lecture4_2 {
     }
 
     @AfterTest
-    public void postconditions(){
+    public void postconditions() {
         getWebDriver().close();
     }
 

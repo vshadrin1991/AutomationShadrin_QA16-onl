@@ -4,7 +4,9 @@ import driver.SimpleDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,23 +15,25 @@ import static driver.SimpleDriver.closeWebDriver;
 import static driver.SimpleDriver.getWebDriver;
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
-/**Залогиниться https://www.saucedemo.com/
- Добавить товар в корзину
- Перейти в корзину
- Проверить (assertEquals) стоимость товара и его имя в корзине
- Выполнить поиск локаторов*/
+/**
+ * Залогиниться https://www.saucedemo.com/
+ * Добавить товар в корзину
+ * Перейти в корзину
+ * Проверить (assertEquals) стоимость товара и его имя в корзине
+ * Выполнить поиск локаторов
+ */
 
 public class Task5_2 {
 
     @BeforeMethod
-    public void preconditions(){
+    public void preconditions() {
         SimpleDriver simpleDriver = new SimpleDriver();
         getWebDriver().get("https://www.saucedemo.com/");
     }
 
 
-    @Test ()
-    public void test(){
+    @Test()
+    public void test() {
         getWebDriver().findElement(By.id("user-name")).sendKeys("standard_user");
         getWebDriver().findElement(By.name("password")).sendKeys("secret_sauce");
         getWebDriver().findElement(By.className("submit-button")).click();
@@ -46,7 +50,7 @@ public class Task5_2 {
         });
 
 
-        List<String> expectedData= new ArrayList<>() {{
+        List<String> expectedData = new ArrayList<>() {{
             add("Sauce Labs Backpack");
             add("$29.99");
             add("Sauce Labs Bike Light");
@@ -58,9 +62,9 @@ public class Task5_2 {
     }
 
     @Test
-    public void testXpath(){
+    public void testXpath() {
         getWebDriver().findElement(By.xpath("//input[@name='user-name']")).sendKeys("standard_user"); //по атрибуту
-        getWebDriver().findElement(By.xpath( "//input[@id='user-name']/ancestor::div[@class='login-box']//*[@placeholder='Password']")).sendKeys("secret_sauce");//ancestor
+        getWebDriver().findElement(By.xpath("//input[@id='user-name']/ancestor::div[@class='login-box']//*[@placeholder='Password']")).sendKeys("secret_sauce");//ancestor
         getWebDriver().findElement(By.xpath("//*[contains(@data-test, 'login-b')]")).click(); //по частичному совпадению атрибута
 
         getWebDriver().findElement(By.xpath("//div[@class='inventory_item_description']/descendant::div[@class='pricebar']//*[@data-test='add-to-cart-sauce-labs-backpack']")).click(); //descendant
@@ -72,14 +76,14 @@ public class Task5_2 {
 
         getWebDriver().findElement(By.xpath("//*[@class='shopping_cart_link']")).click();
 
-        List<String> actualData= new ArrayList<>();
+        List<String> actualData = new ArrayList<>();
         List<WebElement> result = getWebDriver().findElements(By.xpath("//div[@class='inventory_item_name' or @class='inventory_item_price']")); //or
         result.forEach(webElement1 -> {
             actualData.add(webElement1.getText());
         });
 
 
-        List<String> expectedData = new ArrayList<>(){{
+        List<String> expectedData = new ArrayList<>() {{
             add("Sauce Labs Backpack");
             add("$29.99");
             add("Sauce Labs Bike Light");
@@ -118,7 +122,7 @@ public class Task5_2 {
             actualData.add(webElement.getText());
         });
 
-        List<String> expectedData = new ArrayList<>(){{
+        List<String> expectedData = new ArrayList<>() {{
             add("Sauce Labs Backpack");
             add("$29.99");
             add("Sauce Labs Bolt T-Shirt");
@@ -137,7 +141,7 @@ public class Task5_2 {
     }
 
     @AfterMethod
-    public void postconditions(){
+    public void postconditions() {
         closeWebDriver();
     }
 
