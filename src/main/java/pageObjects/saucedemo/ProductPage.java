@@ -30,8 +30,9 @@ public class ProductPage extends BasePage {
         Assert.assertTrue(getWebDriver().getCurrentUrl().contains("inventory.html"));
     }
 
-    public void verifyPageTitle() {
+    public ProductPage verifyPageTitle() {
         Assert.assertEquals(getText(title), "PRODUCTS");
+        return this;
     }
 
     public void addProductToBasket(String productName) {

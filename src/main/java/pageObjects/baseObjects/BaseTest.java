@@ -3,6 +3,7 @@ package pageObjects.baseObjects;
 import driver.SimpleDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Guice;
 import org.testng.annotations.Listeners;
 import testNgUtils.ExtentReportListener;
 import testNgUtils.Listener;

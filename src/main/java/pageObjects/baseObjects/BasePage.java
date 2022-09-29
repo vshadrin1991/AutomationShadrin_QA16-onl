@@ -1,5 +1,5 @@
 package pageObjects.baseObjects;
-
+import driver.UIElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -47,7 +47,7 @@ public abstract class BasePage {
 
     protected void click(WebElement webElement) {
         System.out.println("I'm click by :: " + webElement);
-        webElement.click();
+        new UIElement(webElement).click();
     }
 
     protected String getText(By locator) {
