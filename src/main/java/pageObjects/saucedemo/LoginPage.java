@@ -2,6 +2,7 @@ package pageObjects.saucedemo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
 
 public class LoginPage extends BasePage {
@@ -10,12 +11,12 @@ public class LoginPage extends BasePage {
     private final By loginBtn = By.id("login-button");
 
     public LoginPage open() {
-        driver.get("https://www.saucedemo.com/");
+        load("https://www.saucedemo.com/");
         return this;
     }
 
     public LoginPage open(String url) {
-        driver.get(url);
+        load(url);
         return this;
     }
 
@@ -30,7 +31,7 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage verifyThatLoginPageIsClosed() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(loginBtn));
+        Assert.assertTrue(elementNotExist(loginBtn));
         return this;
     }
 
