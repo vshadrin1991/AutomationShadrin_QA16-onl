@@ -33,4 +33,14 @@ public class Lecture12_2_Test extends BaseTest {
         Collections.sort(sortedData);
         Assert.assertEquals(currencyData, sortedData);
     }
+
+
+    @Test(priority = 3)
+    public void sortEmail_Test() {
+        get(NavigationPage.class).open().navigateTo(NavigationItems.SORTABLE_DATA_TABLES);
+        Map<String, List<String>> mapTableData = get(SortableDataTablesPage.class).checkTableIsDisplayed().clickTableColumn("Email").getTableData();
+        List<String> gmailData = mapTableData.get("Email").stream().map(data -> data.split("@")[0] + "@gmail.com").collect(Collectors.toList());
+        gmailData.forEach(System.out::println);
+    }
 }
+

@@ -46,7 +46,6 @@ public class Lecture12_Test extends BaseTest {
         System.out.println(audiData);
     }
 
-
     @Test
     public void productPage_Test() {
         String productName = "Sauce Labs Backpack";
