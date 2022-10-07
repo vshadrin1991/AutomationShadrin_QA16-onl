@@ -1,7 +1,6 @@
 package pageObjects.saucedemo;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
 
@@ -11,7 +10,7 @@ public class LoginPage extends BasePage {
     private final By loginBtn = By.id("login-button");
 
     public LoginPage open() {
-        load("https://www.saucedemo.com/");
+        load();
         return this;
     }
 
@@ -27,6 +26,16 @@ public class LoginPage extends BasePage {
 
     public LoginPage enterPassword(String password) {
         enter(this.password, password);
+        return this;
+    }
+
+    public LoginPage enterUsername() {
+        enter(this.username, properties.getProperty("username"));
+        return this;
+    }
+
+    public LoginPage enterPassword() {
+        enter(this.password,  properties.getProperty("password"));
         return this;
     }
 

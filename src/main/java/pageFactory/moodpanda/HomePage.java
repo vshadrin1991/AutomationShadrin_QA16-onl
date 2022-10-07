@@ -16,8 +16,8 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public HomePage open(String url) {
-        load(url);
+    public HomePage open() {
+        load();
         return this;
     }
 
