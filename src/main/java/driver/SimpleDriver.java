@@ -20,7 +20,6 @@ public class SimpleDriver {
         }
     }
 
-
     public static WebDriver getWebDriver() {
         return webDriver.get();
     }
@@ -32,7 +31,6 @@ public class SimpleDriver {
             webDriver.remove();
         }
     }
-
 
     private static void setWebDriver() {
         System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
