@@ -7,7 +7,6 @@ pipeline {
                         checkout scm
                         echo "Building ${env.JOB_NAME}..."
                     }
-
         }
         stage('Run tests') {
             agent {
@@ -22,6 +21,7 @@ pipeline {
             post {
                 always {
                     sh 'chown -R 1003:1003 ./target/allure-results'
+                    sh 'ls'
                     archiveArtifacts artifacts: 'target/allure-results/*', allowEmptyArchive: true
                     archiveArtifacts artifacts: 'target/logs/*', allowEmptyArchive: true
                 }
@@ -30,6 +30,7 @@ pipeline {
     }
      post {
                 always {
+                        sh 'ls'
                         script {
                             allure([
                                     includeProperties: false,
