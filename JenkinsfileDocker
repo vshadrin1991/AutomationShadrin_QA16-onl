@@ -20,7 +20,7 @@ pipeline {
             }
             post {
                 always {
-                    sh 'chown -R 1003:1003 ./target/allure-results'
+                    sh 'chown -R 1003:1003 target/allure-results'
                     sh 'ls'
                     archiveArtifacts artifacts: 'target/allure-results/*', allowEmptyArchive: true
                     archiveArtifacts artifacts: 'target/logs/*', allowEmptyArchive: true
@@ -31,7 +31,7 @@ pipeline {
      post {
                 always {
                         sh 'ls'
-                        sh 'chmod -R o+xw target/allure-results'
+                        sh 'chown -R 1003:1003 target/allure-results'
                         script {
                             allure([
                                     includeProperties: false,
