@@ -6,13 +6,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Run Maven on a Unix agent.
                 sh "mvn -DskipTests=true clean install"
             }
         }
         stage('Run tests') {
             steps {
-                sh 'mvn clean test -Dconfig="moodpanda" -DsuiteXml="Lecture_13"'
+                sh 'mvn clean test -Dconfig="${CONFIG}" -DsuiteXml="${SUITE}"'
+            }
+        }
+        stage('Copy artifacts') {
+            steps {
+                archiveArtifacts artifacts: 'target/logs/*', allowEmptyArchive: true
             }
         }
     }
