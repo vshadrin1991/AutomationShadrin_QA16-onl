@@ -21,15 +21,26 @@ pipeline {
             }
             post {
                 always {
+                    dir('nora_ui_automation') {
+                                            sh 'chown -R 1003:1003 ./allure-results'
+                    }
                     archiveArtifacts artifacts: 'target/allure-results/*', allowEmptyArchive: true
                     archiveArtifacts artifacts: 'target/logs/*', allowEmptyArchive: true
                 }
             }
         }
     }
-    post {
-        always {
-            allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+     post {
+                always {
+                        script {
+                            allure([
+                                    includeProperties: false,
+                                    jdk: '',
+                                    properties: [],
+                                    reportBuildPolicy: 'ALWAYS',
+                                    results: [[path: 'target/allure-results']]
+                            ])
+                        }
+                }
         }
-    }
 }
