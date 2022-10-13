@@ -21,9 +21,7 @@ pipeline {
             }
             post {
                 always {
-                    dir('nora_ui_automation') {
-                                            sh 'chown -R 1003:1003 ./allure-results'
-                    }
+                    sh 'chown -R 1003:1003 ./target/allure-results'
                     archiveArtifacts artifacts: 'target/allure-results/*', allowEmptyArchive: true
                     archiveArtifacts artifacts: 'target/logs/*', allowEmptyArchive: true
                 }
