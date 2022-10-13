@@ -31,6 +31,7 @@ pipeline {
      post {
                 always {
                         sh 'ls'
+                        sh 'chmod -R o+xw ./target/allure-results'
                         script {
                             allure([
                                     includeProperties: false,
@@ -41,5 +42,5 @@ pipeline {
                             ])
                         }
                 }
-        }
+      }
 }
