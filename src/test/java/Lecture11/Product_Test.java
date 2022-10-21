@@ -22,7 +22,8 @@ public class Product_Test extends BaseTest {
     @Issue("Product Page issue")
     @TmsLink("Product Page tms")
     public void productTest(@Optional("0") String steps) {
-        if (steps.equals("0")) get(LoginSteps.class).login(properties.getProperty("username"), properties.getProperty("password"));
+        if (steps.equals("0"))
+            get(LoginSteps.class).login(properties.getProperty("username"), properties.getProperty("password"));
         get(ProductPage.class).verifyPageTitle();
     }
 }

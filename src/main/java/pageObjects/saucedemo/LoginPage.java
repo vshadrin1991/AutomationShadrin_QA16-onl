@@ -35,7 +35,7 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage enterPassword() {
-        enter(this.password,  properties.getProperty("password"));
+        enter(this.password, properties.getProperty("password"));
         return this;
     }
 

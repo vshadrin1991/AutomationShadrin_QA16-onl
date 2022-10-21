@@ -1,6 +1,5 @@
 package Lecture17;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -8,15 +7,16 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Condition.matchText;
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Configuration.*;
 
 public class Lecture17_Test {
 
     @BeforeTest
-    public void pre(){
+    public void pre() {
         baseUrl = "https://www.rw.by/";
     }
 

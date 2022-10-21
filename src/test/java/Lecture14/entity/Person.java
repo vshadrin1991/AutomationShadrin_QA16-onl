@@ -8,10 +8,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 
-
 public class Person {
-    String firstName;
-    String lastName;
+    String firstName = "Test";
+    String lastName = "Test";
     String address;
     Integer age;
     String sex;

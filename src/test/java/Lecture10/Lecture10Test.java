@@ -17,7 +17,7 @@ public class Lecture10Test extends BaseTest {
     LoginPage loginPage;
 
     @BeforeClass
-    public void precondition(){
+    public void precondition() {
         loginPage = new LoginPage();
     }
 
