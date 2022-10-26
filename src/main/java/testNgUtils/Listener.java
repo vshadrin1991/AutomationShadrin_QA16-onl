@@ -1,5 +1,6 @@
 package testNgUtils;
 
+import lombok.SneakyThrows;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -8,6 +9,7 @@ import propertyHelper.PropertyReader;
 
 public class Listener implements ITestListener {
 
+    @SneakyThrows
     @Override
     public void onStart(ITestContext context) {
         // <уловие> ? <если уловие = true> : <если уловие = false>
