@@ -23,6 +23,14 @@ public class Lecture20 {
     }
 
     @Test
+    public void deleteTest() {
+        Response response = given().delete("users/2");
+        response.then().assertThat().statusCode(204);
+        Assert.assertTrue(response.body().asString().isEmpty());
+    }
+
+
+    @Test
     public void get_test() {
         Integer id = 2;
         Response response = given().get("/users?id=" + id);
