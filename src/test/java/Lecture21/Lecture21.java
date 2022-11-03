@@ -11,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
+import static com.codeborne.selenide.Selenide.*;
+
 
 public class Lecture21 {
     Connection connection;
@@ -21,6 +23,7 @@ public class Lecture21 {
     @SneakyThrows
     @BeforeTest
     public void preconditions() {
+        print(select("SELECT * FROM user"));
         connection = DriverManager.getConnection("jdbc:mysql://db4free.net/testqa07?user=testqa07&password=testqa07");
         statement = connection.createStatement();
         selectHelper = new SelectHelper(statement);
