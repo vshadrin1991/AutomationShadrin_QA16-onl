@@ -11,7 +11,6 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
-import static com.codeborne.selenide.Selenide.*;
 
 
 public class Lecture21 {
@@ -20,10 +19,10 @@ public class Lecture21 {
 
     SelectHelper selectHelper;
 
+
     @SneakyThrows
     @BeforeTest
     public void preconditions() {
-        print(select("SELECT * FROM user"));
         connection = DriverManager.getConnection("jdbc:mysql://db4free.net/testqa07?user=testqa07&password=testqa07");
         statement = connection.createStatement();
         selectHelper = new SelectHelper(statement);
@@ -37,6 +36,24 @@ public class Lecture21 {
         print(selectHelper.select(sql));
         selectHelper.select(sql).forEach(row -> {
             Assert.assertTrue(row.get("last_name").contains("test"));
+        });
+    }
+
+    @Test(priority = 1)
+    public void select2Like_Test() {
+        String sql = "SELECT * FROM user WHERE last_name LIKE 'test%'";
+        print(select(sql));
+        select(sql).forEach(row -> {
+            Assert.assertTrue(row.get("last_name").contains("test"));
+        });
+    }
+
+    @Test(priority = 2)
+    public void select2Between_Test() {
+        String sql = "SELECT * FROM user WHERE age BETWEEN 20 AND 30";
+        print(select(sql));
+        select(sql).forEach(row -> {
+            Assert.assertTrue(Integer.parseInt(row.get("age")) >= 20 && Integer.parseInt(row.get("age")) <= 30);
         });
     }
 
@@ -88,6 +105,13 @@ public class Lecture21 {
     @SneakyThrows
     private Integer createTable(String sql) {
         return statement.executeUpdate(sql);
+    }
+
+
+    private void print123(List<Map<String, String>> data) {
+        System.out.println("===================================================");
+        data.forEach(System.out::println);
+        System.out.println("===================================================");
     }
 
 
