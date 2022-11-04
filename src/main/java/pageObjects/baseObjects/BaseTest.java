@@ -38,7 +38,7 @@ public abstract class BaseTest {
         return instance;
     }
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void stop() {
         log.debug("I'm close wed driver!");
         closeWebDriver();

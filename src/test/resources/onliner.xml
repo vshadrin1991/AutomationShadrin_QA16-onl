@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture 22" thread-count="2" parallel="tests">
+
+    <test name="Online tests">
+        <classes>
+            <class name="Lecture22.OnlineTest"/>
+        </classes>
+    </test>
+</suite>
