@@ -1,40 +1,36 @@
 package sql;
 
 import lombok.SneakyThrows;
+import lombok.extern.log4j.Log4j;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SelectHelper extends DBConnector {
-    private String select;
-    private String from;
 
-    public static SelectHelper getSelect() {
-        return new SelectHelper();
-    }
+@Log4j
+public class TableHelper extends DBConnector {
+    Statement statement;
 
-    public SelectHelper select(String select) {
-        this.select = select;
-        return this;
-    }
-
-    public SelectHelper from(String from) {
-        this.from = from;
+    @SneakyThrows
+    public TableHelper createTable(String tableName) {
+        log.debug("Create table");
+        statement.executeUpdate("CREATE TABLE " + tableName + " (id int, " + "firstname varchar(255), " + "lastname varchar(255), " + "age int, " + "city varchar(255))");
         return this;
     }
 
     @SneakyThrows
-    public ResultSet execute() {
-        return getStatement().executeQuery("SELECT " + select + " FROM " + from);
+    public Integer insert(String sql) {
+        return statement.executeUpdate(sql);
     }
 
     @SneakyThrows
-    public List<Map<String, String>> getData() {
-        ResultSet resultSet = execute();
+    public List<Map<String, String>> select(String sql) {
+        ResultSet resultSet = statement.executeQuery(sql);
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
         List<Map<String, String>> data = new ArrayList<>();
         while (resultSet.next()) {

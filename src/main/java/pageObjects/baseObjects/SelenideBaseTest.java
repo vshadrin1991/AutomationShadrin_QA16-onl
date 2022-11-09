@@ -8,7 +8,6 @@ import testNgUtils.SelenideListener;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.driver;
-import static driver.DriverManager.closeWebDriver;
 
 @Listeners(SelenideListener.class)
 public class SelenideBaseTest {
@@ -23,7 +22,7 @@ public class SelenideBaseTest {
 
     @AfterTest
     public void stop() {
-        if(driver().hasWebDriverStarted()) {
+        if (driver().hasWebDriverStarted()) {
             driver().close();
         }
     }
